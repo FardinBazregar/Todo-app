@@ -1,7 +1,7 @@
 import clsx from "clsx";
 export const TodoItem = ({ title, done }) => {
   return (
-    <div>
+    <div className=" flex justify-between bg-white shadow-md rounded-md mb-4 p-4">
       <p className={clsx({ "line-through": done })}>{title}</p>
     </div>
   );
