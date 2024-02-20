@@ -11,12 +11,19 @@ import { useState } from "react";
 import { TodoForm, TodoList } from "./components";
 const TodoApp = () => {
   const [list, setList] = useState([]);
-  const handleTodoAdd = (todoTitle) => {};
+  const handleTodoAdd = (title) => {
+    const newTodoItem = {
+      id: list.length + 1,
+      title,
+      done: false,
+    };
+    setList([...list, newTodoItem]);
+  };
 
   return (
     <div className="container">
       <TodoForm onAddTodo={handleTodoAdd} />
-      {/* <TodoList list={list} /> */}
+      <TodoList list={list} />
     </div>
   );
 };
