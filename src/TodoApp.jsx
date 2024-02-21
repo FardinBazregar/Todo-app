@@ -17,12 +17,12 @@ const TodoApp = () => {
     setList(newList);
   };
   const handleToggleItem = (Todoid) => {
-    setList((prevList) => {
-      return prevList.map((item) => {
+    setList(
+      list.map((item) => {
         if (item.id === Todoid) item.done = !item.done;
         return item;
-      });
-    });
+      })
+    );
   };
 
   const handleTodoAdd = (title) => {

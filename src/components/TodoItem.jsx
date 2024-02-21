@@ -6,7 +6,7 @@ const Button = ({ children, onclick }) => (
   </button>
 );
 
-export const TodoItem = ({ title, done, ontoggle, ondelete }) => {
+export const TodoItem = ({ title, done, onToggle, onDelete }) => {
   return (
     <div
       className={clsx(
@@ -17,9 +17,8 @@ export const TodoItem = ({ title, done, ontoggle, ondelete }) => {
       <p className={clsx({ "line-through": done })}>{title}</p>
 
       <div className="border-l border-gray-400 pl-2">
-        <Button onClick={ontoggle}>✅</Button>
-
-        <Button onClick={ondelete}>❌</Button>
+        <Button onclick={onToggle}>✅</Button>
+        <Button onclick={onDelete}>❌</Button>
       </div>
     </div>
   );
