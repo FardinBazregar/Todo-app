@@ -5,6 +5,7 @@ export const TodoForm = ({ onAddTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddTodo(tern);
+    setTern("");
   };
   return (
     <form className="p-2 border-b border-gray-400 " onSubmit={handleSubmit}>
@@ -14,8 +15,9 @@ export const TodoForm = ({ onAddTodo }) => {
         onChange={({ target }) => setTern(target.value)}
       />
       <button
-        className="bg-green-400 py-1 px-4 border-green-500 border text-white rounded-md hover:bg-green-700 transition-colors"
+        className="bg-green-400 py-1 px-4 border-green-500 border text-white rounded-md hover:bg-green-700 transition-colors disabled:bg-gray-300 border-none"
         type="submit "
+        disabled={!tern}
       >
         Save
       </button>

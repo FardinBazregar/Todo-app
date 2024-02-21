@@ -10,7 +10,8 @@
 import { TodoForm, TodoList } from "./components";
 import { useTodoApp } from "./components/hooks/useTodoApp";
 const TodoApp = () => {
-  const { handleDeletItem, handleTodoAdd, handleToggleItem, list } = useTodoApp;
+  const { handleDeletItem, handleTodoAdd, handleToggleItem, list } =
+    useTodoApp();
 
   return (
     <div className="container">
