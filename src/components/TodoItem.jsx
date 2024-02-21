@@ -1,12 +1,25 @@
 import clsx from "clsx";
-export const TodoItem = ({ title, done }) => {
+
+const Button = ({ children, onclick }) => (
+  <button onClick={onclick} className="px-1 mx-1">
+    {children}
+  </button>
+);
+
+export const TodoItem = ({ title, done, ontoggle, ondelete }) => {
   return (
-    <div className=" flex justify-between bg-white shadow-md rounded-md mb-4 p-4">
+    <div
+      className={clsx(
+        "flex justify-between bg-white shadow-md rounded-md mb-4 p-4 ",
+        { "bg-green-50": done }
+      )}
+    >
       <p className={clsx({ "line-through": done })}>{title}</p>
 
-      <div>
-        <button className="px-1 mx-1">✅</button>
-        <button className="px-1 mx-1">❌</button>
+      <div className="border-l border-gray-400 pl-2">
+        <Button onClick={ontoggle}>✅</Button>
+
+        <Button onClick={ondelete}>❌</Button>
       </div>
     </div>
   );

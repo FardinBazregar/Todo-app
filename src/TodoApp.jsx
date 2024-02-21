@@ -11,6 +11,20 @@ import { useState } from "react";
 import { TodoForm, TodoList } from "./components";
 const TodoApp = () => {
   const [list, setList] = useState([]);
+
+  const handleDeletItem = (todoId) => {
+    const newList = list.filter(({ id }) => id !== todoId);
+    setList(newList);
+  };
+  const handleToggleItem = (Todoid) => {
+    setList((prevList) => {
+      return prevList.map((item) => {
+        if (item.id === Todoid) item.done = !item.done;
+        return item;
+      });
+    });
+  };
+
   const handleTodoAdd = (title) => {
     const newTodoItem = {
       id: list.length + 1,
@@ -23,7 +37,11 @@ const TodoApp = () => {
   return (
     <div className="container">
       <TodoForm onAddTodo={handleTodoAdd} />
-      <TodoList list={list} />
+      <TodoList
+        list={list}
+        handleDeletItem={handleDeletItem}
+        handleToggleItem={handleToggleItem}
+      />
     </div>
   );
 };
