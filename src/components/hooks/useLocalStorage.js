@@ -11,6 +11,9 @@ export const useLocalStorage = ({ key }) => {
     return JSON.parse(localStorage.getItem(key));
   };
 
+  const remove = (key) => {
+    localStorage.removeItem(key);
+  };
   return {
     set,
     get,
