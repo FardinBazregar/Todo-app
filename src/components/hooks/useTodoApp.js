@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 export const useTodoApp = () => {
-  const [list, setList] = useState([]);
+  const [defaulList, { get }] = useLocalStorage("todos");
+  const [list, setList] = useState(defaulList);
 
   const handleDeletItem = (todoId) => {
     const newList = list.filter(({ id }) => id !== todoId);

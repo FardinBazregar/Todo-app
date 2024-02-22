@@ -1,4 +1,4 @@
-export const useLocalStorage = ({ key }) => {
+export const useLocalStorage = (key) => {
   const set = (key, value) => {
     let data;
     if (typeof value === "object") {
@@ -8,15 +8,22 @@ export const useLocalStorage = ({ key }) => {
   };
 
   const get = (key) => {
-    return JSON.parse(localStorage.getItem(key));
+    try {
+      return JSON.parse(localStorage.getItem(key));
+    } catch {
+      return localStorage.getItem(key);
+    }
   };
 
   const remove = (key) => {
     localStorage.removeItem(key);
   };
-  return {
-    set,
-    get,
-    remove,
-  };
+  return [
+    get(key),
+    {
+      set,
+      get,
+      remove,
+    },
+  ];
 };
